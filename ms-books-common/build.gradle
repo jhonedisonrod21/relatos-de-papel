@@ -1,0 +1,25 @@
+plugins {
+    id 'java-library'
+}
+
+description = 'ms-books-common'
+
+repositories {
+    mavenCentral()
+}
+
+def lombokVersion = "1.18.42"
+
+dependencies {
+    api "com.fasterxml.jackson.core:jackson-databind:2.18.2"
+    api "org.springframework.boot:spring-boot-starter-validation:4.0.1"
+    api 'org.springdoc:springdoc-openapi-starter-webmvc-ui:3.0.0'
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    testCompileOnly "org.projectlombok:lombok:${lombokVersion}"
+    testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+}
+
+
+
+

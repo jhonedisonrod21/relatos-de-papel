@@ -1,0 +1,60 @@
+plugins {
+    id 'org.springframework.boot' version '4.0.1' apply false
+    id 'io.spring.dependency-management' version '1.1.7' apply false
+}
+
+
+description = 'Proyecto transversal UNIR'
+
+def authors ='Jhon Edison Rodriguez, Alexander Pastrana Casteblanco, Jhonatan Rocha'
+def release = '0.0.1-SNAPSHOT'
+def javaVersion = 25
+
+
+allprojects{
+    group = 'co.com.unir'
+    version = release
+    ext {
+        set('springCloudVersion', "2025.1.0")
+    }
+}
+
+subprojects {
+    plugins.withId("java") {
+        java {
+            toolchain {
+                languageVersion = JavaLanguageVersion.of(javaVersion)
+            }
+        }
+    }
+    // Config común de compilación (solo si hay tasks JavaCompile)
+    tasks.withType(JavaCompile).configureEach {
+        options.encoding = "UTF-8"
+        // opcional:
+        // options.release.set(25)
+    }
+    tasks.withType(Test).configureEach {
+        useJUnitPlatform()
+    }
+    tasks.withType(Jar).configureEach {
+        manifest {
+            attributes(
+                    "Author": authors,
+                    "Implementation-Title": project.name,
+                    "Implementation-Version": project.version.toString()
+            )
+        }
+    }
+
+    plugins.withId("org.springframework.boot") {
+        tasks.named("bootJar").configure {
+            manifest {
+                attributes(
+                        "Author": authors,
+                        "Implementation-Title": project.name,
+                        "Implementation-Version": project.version.toString()
+                )
+            }
+        }
+    }
+}

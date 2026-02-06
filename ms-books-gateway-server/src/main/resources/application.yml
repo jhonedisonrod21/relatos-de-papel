@@ -1,0 +1,49 @@
+spring:
+  application:
+    name: ms-books-gateway-server
+  cloud:
+    gateway:
+      server:
+        webflux:
+          discovery:
+            locator:
+              enabled: true
+              lower-case-service-id: true
+          default-filters:
+            - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+          globalcors:
+            cors-configurations:
+              '[/**]':
+                allowedOrigins: ${ALLOWED_ORIGINS:*}
+                allowedHeaders:
+                allowedMethods:
+                  - GET
+                  - POST
+                  - PUT
+                  - DELETE
+                  - PATCH
+management:
+  endpoint:
+    gateway:
+      access: read_only
+  endpoints:
+    web:
+      exposure:
+        include:
+          - '*'
+
+server:
+  port: 5000
+
+eureka:
+  instance:
+    preferIpAddress: true
+    hostname: localhost
+
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:7000/eureka
+
+
