@@ -3,12 +3,12 @@ package co.com.unir.msbooksordersmanagement.application;
 import co.com.unir.msbookscommon.DTOs.BookDTO;
 import co.com.unir.msbooksordersmanagement.application.error.BooksServiceUnavailableException;
 import co.com.unir.msbooksordersmanagement.application.error.ItemNotFoundException;
-import co.com.unir.msbooksordersmanagement.application.error.NotEnoughStockException;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpClientErrorException;
@@ -24,7 +24,7 @@ class BooksService {
     @Autowired
     RestTemplate booksTemplate;
 
-    public static final String BOOKS_BASE_URL = "http://ms-books-catalog-service/books";
+    public static final String BOOKS_BASE_URL = "http://ms-books-gateway-server/ms-books-catalog-service/books";
 
     private ResponseEntity<BookDTO> getBookById(String bookId){
         return booksTemplate.getForEntity(BOOKS_BASE_URL+"/"+bookId,BookDTO.class);
