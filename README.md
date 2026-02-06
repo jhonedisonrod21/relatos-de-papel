@@ -35,9 +35,9 @@ se trabajo son las siguientes versiones de las herramientas y frameworks
 ## Autores
 
 * Jhon Edison Rodriguez Maldonado
-* Jhon Edison Rodriguez Maldonado
+* Jhonatan Estiven Rocha
 * Alexander Pastrana Casteblanco
 
-Copyright © 2026 Jhon Edison Rodriguez Maldonado, Jhon Edison Rodriguez Maldonado, Alexander Pastrana Casteblanco
+Copyright © 2026 Jhon Edison Rodriguez Maldonado, Jhonatan Estiven Rocha, Alexander Pastrana Casteblanco
 
 All rights reserved. No permission is granted to use, copy, modify, or distribute this software without explicit written permission from the copyright holder.
